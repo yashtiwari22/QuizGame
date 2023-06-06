@@ -1,70 +1,74 @@
-# Getting Started with Create React App
+# Quiz Game
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a React component for a quiz game that allows users to arrange given numbers in ascending order by dragging and dropping the cards in the correct order.
 
-## Available Scripts
+## Installation
 
-In the project directory, you can run:
+1: Clone the repository or download the source code.
+2: Navigate to the project directory.
+3: Install the dependencies by running the following command:
+4: Start the development server:
+npm start
+The application will be running at http://localhost:3000.
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+. Generates random options for the quiz game.
+. Allows dragging and dropping of options to arrange them.
+. Provides visual feedback for correct and incorrect order.
+. Notifies the user whether they won or lost the game.
+. Allows resetting the game for another round.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Functions
 
-### `npm test`
+### generateOptions()
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Generates an array of random options for the quiz game. It uses the useState hook to update the options state with the generated random options.
 
-### `npm run build`
+### handleDragStart(event, optionIndex)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Event handler function that sets the dataTransfer data for the drag event. It sets the optionIndex as the data to be transferred.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### handleDragOver(event)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Event handler function that prevents the default behavior of the drag over event.
 
-### `npm run eject`
+### handleDrop(event, inputIndex)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Event handler function that handles the drop event. It retrieves the option index from the dataTransfer data, retrieves the dragged option from the options state, and updates the input state based on the drop position. It also handles swapping values if the drop zone is already filled.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### handleOptionDragStart(event, inputIndex)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Event handler function that sets the dataTransfer data for the drag event. It sets the inputIndex as the data to be transferred and sets the drop state to true.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### handleOptionDragOver(event)
 
-## Learn More
+Event handler function that prevents the default behavior of the drag over event.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### handleOptionDrop(event, optionIndex)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Event handler function that handles the drop event for options. It retrieves the input index from the dataTransfer data, retrieves the dragged item from the input state, and updates the options state and input state based on the drop position.
 
-### Code Splitting
+### checkResult()
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Checks the result of the quiz game by comparing the sorted input array with the original input array. If they are the same, it sets the isWinner state to true, indicating the user has won. It also sets the showResult state to true to display the result.
 
-### Analyzing the Bundle Size
+### resetGame()
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Resets the quiz game by generating new options, resetting the input state, and setting the showResult state to false.
 
-### Making a Progressive Web App
+## Dependencies
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+The following dependencies are required to run the QuizGame component:
 
-### Advanced Configuration
+. React
+. framer-motion
+. @lottiefiles/react-lottie-player
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+You can install these dependencies using the following command:
 
-### Deployment
+npm install react framer-motion @lottiefiles/react-lottie-player
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## License
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is licensed under the MIT License. See the LICENSE file for more information.
